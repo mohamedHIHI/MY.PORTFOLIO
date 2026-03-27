@@ -1,0 +1,745 @@
+Voici un portfolio complètement revisité avec une esthétique dorée et luxueuse, des animations fluides et une expérience utilisateur premium.
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Mohamed Hihi | Portfolio Doré & Prestige</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #F5E6B0;
+            --gold-dark: #B8860B;
+            --gold-glow: rgba(212, 175, 55, 0.4);
+            --cream: #FFF9F0;
+            --charcoal: #1A1A1A;
+            --dark-bg: #0F0F0F;
+            --card-bg: rgba(26, 26, 26, 0.6);
+            --text-gold: #E8C468;
+            --text-light: #F5F5F5;
+            --text-muted: #B8B8B8;
+            --shadow-gold: 0 20px 40px rgba(212, 175, 55, 0.15), 0 0 0 1px rgba(212, 175, 55, 0.1);
+            --shadow-gold-hover: 0 30px 50px rgba(212, 175, 55, 0.25), 0 0 0 2px rgba(212, 175, 55, 0.3);
+            --gradient-gold: linear-gradient(135deg, #D4AF37 0%, #F5E6B0 50%, #B8860B 100%);
+            --gradient-dark: linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--charcoal);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1A1A1A; }
+        ::-webkit-scrollbar-thumb { background: var(--gold-primary); border-radius: 10px; }
+
+        /* Animations globales */
+        @keyframes shimmerGold {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes goldPulse {
+            0%, 100% { box-shadow: 0 0 0 0 var(--gold-glow); }
+            50% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
+        }
+        @keyframes rotateGold {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes floatGold {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .animate-fadeUp { animation: fadeInUp 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
+        .animate-fadeLeft { animation: fadeInLeft 0.7s ease forwards; }
+        .animate-fadeRight { animation: fadeInRight 0.7s ease forwards; }
+        .animate-scale { animation: scaleIn 0.6s cubic-bezier(0.34, 1.2, 0.64, 1) forwards; }
+        .animate-float { animation: floatGold 5s ease-in-out infinite; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+
+        /* Navigation */
+        .nav-gold {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.2rem 0;
+            background: rgba(15, 15, 15, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60%;
+            height: 2px;
+            background: var(--gradient-gold);
+            border-radius: 2px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-gold);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--gold-primary); }
+        .nav-links a:hover::before { width: 100%; }
+
+        /* Buttons */
+        .btn-gold {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.9rem 2rem;
+            background: var(--gradient-gold);
+            border: none;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #1A1A1A;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            text-decoration: none;
+        }
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-gold-hover);
+        }
+        .btn-outline-gold {
+            background: transparent;
+            border: 2px solid var(--gold-primary);
+            color: var(--gold-primary);
+        }
+        .btn-outline-gold:hover {
+            background: var(--gold-primary);
+            color: #1A1A1A;
+            transform: translateY(-3px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg-particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            background: var(--gold-primary);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: floatGold 8s infinite;
+        }
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-content { opacity: 0; animation: fadeInUp 0.8s ease 0.2s forwards; }
+        .hero-badge {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 60px;
+            font-size: 0.85rem;
+            color: var(--gold-primary);
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 .gold-text {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-image {
+            position: relative;
+            opacity: 0;
+            animation: scaleIn 0.8s ease 0.4s forwards;
+        }
+        .gold-frame {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            background: var(--gradient-gold);
+            padding: 8px;
+        }
+        .gold-frame img {
+            width: 100%;
+            border-radius: 24px;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .gold-frame:hover img { transform: scale(1.02); }
+        .gold-ring {
+            position: absolute;
+            inset: -15px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 40px;
+            animation: goldPulse 2s infinite;
+            pointer-events: none;
+        }
+
+        /* Section Styles */
+        section { padding: 6rem 0; position: relative; }
+        .section-container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .section-title .gold {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+        }
+        .section-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--gradient-gold);
+            margin: 1rem auto 2rem;
+            border-radius: 3px;
+        }
+
+        /* Cards Dorées */
+        .gold-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 24px;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .gold-card.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .gold-card:hover {
+            border-color: var(--gold-primary);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-gold-hover);
+        }
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(212, 175, 55, 0.15);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--gold-primary);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+        .gold-card:hover .card-icon {
+            background: var(--gradient-gold);
+            color: #1A1A1A;
+            transform: scale(1.05);
+        }
+
+        /* Grid Layouts */
+        .grid-2, .grid-3, .grid-4 {
+            display: grid;
+            gap: 2rem;
+        }
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        .grid-4 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+
+        /* Timeline */
+        .timeline-gold {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .timeline-gold::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-gold);
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 70px;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.6s ease;
+        }
+        .timeline-item.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 20px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--gold-primary);
+        }
+        .timeline-content {
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 1.5rem;
+        }
+        .timeline-date {
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--gold-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        /* Progress Bars */
+        .skill-item { margin-bottom: 1.5rem; }
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+        .progress-gold {
+            height: 6px;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-gold);
+            border-radius: 10px;
+            width: 0;
+            transition: width 1.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        /* Contact Form */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+        .contact-info-item:hover {
+            border-color: var(--gold-primary);
+            transform: translateX(8px);
+        }
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(212, 175, 55, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--gold-primary);
+        }
+        .form-gold input, .form-gold textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 16px;
+            color: var(--text-light);
+            font-family: inherit;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+        }
+        .form-gold input:focus, .form-gold textarea:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-container { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .section-container { padding: 0 1.5rem; }
+        }
+        @media (max-width: 640px) {
+            section { padding: 4rem 0; }
+            .gold-card { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav-gold">
+    <div class="nav-container">
+        <div class="logo">✦ MOHAMED HIHI ✦</div>
+        <div class="nav-links">
+            <a href="#home">Accueil</a><a href="#about">À propos</a><a href="#projects">Projets</a><a href="#journey">Parcours</a><a href="#skills">Compétences</a><a href="#services">Services</a><a href="#contact">Contact</a>
+            <a href="Mohamed_hihi.pdf (1) (1)" download style="background: rgba(212,175,55,0.2); padding:0.4rem 1rem; border-radius: 40px;"><i class="fas fa-download"></i> CV</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section avec animations dorées -->
+<section id="home" class="hero">
+    <div class="hero-bg-particles" id="particles"></div>
+    <div class="hero-container">
+        <div class="hero-content">
+            <div class="hero-badge"><i class="fas fa-crown"></i> Excellence & Innovation</div>
+            <h1>Création <span class="gold-text">Digitale</span><br>Web & <span class="gold-text">Robotique</span> Prestige</h1>
+            <p style="color: var(--text-muted); font-size: 1.1rem; margin: 1.5rem 0;">Développeuse passionnée par l'alliance de la technologie et de l'élégance, créant des expériences uniques et raffinées.</p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <button class="btn-gold" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><i class="fas fa-gem"></i> Collaborer</button>
+                <button class="btn-outline-gold" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})"><i class="fas fa-arrow-right"></i> Découvrir</button>
+            </div>
+            <div style="display: flex; gap: 2rem; margin-top: 2.5rem;">
+                <div><span style="font-size: 2rem; font-weight: 800; background: var(--gradient-gold); -webkit-background-clip: text; background-clip: text; color: transparent;">5+</span><br><span style="color: var(--text-muted); font-size: 0.85rem;">Projets</span></div>
+                <div><span style="font-size: 2rem; font-weight: 800; background: var(--gradient-gold); -webkit-background-clip: text; background-clip: text; color: transparent;">100%</span><br><span style="color: var(--text-muted); font-size: 0.85rem;">Satisfaction</span></div>
+                <div><span style="font-size: 2rem; font-weight: 800; background: var(--gradient-gold); -webkit-background-clip: text; background-clip: text; color: transparent;">1+</span><br><span style="color: var(--text-muted); font-size: 0.85rem;">Années exp.</span></div>
+            </div>
+        </div>
+        <div class="hero-image animate-float">
+            <div class="gold-frame">
+                <img src="HIHI.jpeg" alt="Mohamed Hihi">
+            </div>
+            <div class="gold-ring"></div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" style="background: linear-gradient(180deg, #0F0F0F 0%, #141414 100%);">
+    <div class="section-container">
+        <h2 class="section-title">À <span class="gold">propos</span></h2>
+        <div class="section-divider"></div>
+        <div class="grid-2">
+            <div class="gold-card" data-delay="0">
+                <div class="card-icon"><i class="fas fa-crown"></i></div>
+                <h3 style="margin-bottom: 1rem;">Vision & Excellence</h3>
+                <p style="color: var(--text-muted);">Développeuse passionnée par la création d'expériences numériques exceptionnelles. Mon parcours allie expertise technique et vision créative pour offrir des solutions qui brillent par leur élégance.</p>
+            </div>
+            <div class="gold-card" data-delay="0.1">
+                <div class="card-icon"><i class="fas fa-microchip"></i></div>
+                <h3 style="margin-bottom: 1rem;">Robotique & Innovation</h3>
+                <p style="color: var(--text-muted);">Spécialisée en robotique et systèmes embarqués, je crée des solutions intelligentes qui allient technologie de pointe et design raffiné.</p>
+            </div>
+        </div>
+        <div class="grid-4" style="margin-top: 2rem;">
+            <div class="gold-card" data-delay="0.2"><i class="fas fa-graduation-cap" style="font-size: 2rem; color: var(--gold-primary);"></i><h4 style="margin: 1rem 0 0.5rem;">Formation</h4><p style="font-size: 0.9rem; color: var(--text-muted);">Baccalauréat Sciences Physiques + Développement Digital</p></div>
+            <div class="gold-card" data-delay="0.3"><i class="fas fa-trophy" style="font-size: 2rem; color: var(--gold-primary);"></i><h4 style="margin: 1rem 0 0.5rem;">Excellence</h4><p style="font-size: 0.9rem; color: var(--text-muted);">5+ projets livrés, satisfaction client 100%</p></div>
+            <div class="gold-card" data-delay="0.4"><i class="fas fa-heart" style="font-size: 2rem; color: var(--gold-primary);"></i><h4 style="margin: 1rem 0 0.5rem;">Passion</h4><p style="font-size: 0.9rem; color: var(--text-muted);">Robotique, technologies émergentes, innovation</p></div>
+            <div class="gold-card" data-delay="0.5"><i class="fas fa-gem" style="font-size: 2rem; color: var(--gold-primary);"></i><h4 style="margin: 1rem 0 0.5rem;">Prestige</h4><p style="font-size: 0.9rem; color: var(--text-muted);">Solutions sur mesure d'exception</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects">
+    <div class="section-container">
+        <h2 class="section-title">Projets <span class="gold">d'Exception</span></h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Des réalisations qui allient technologie et élégance</p>
+        <div class="grid-3">
+            <div class="gold-card" data-delay="0"><div class="card-icon"><i class="fas fa-microphone-alt"></i></div><h3>Voice Translator</h3><p style="color: var(--text-muted); margin: 1rem 0;">Outil de traduction vocale temps réel avec Arduino et C.</p><div style="display: flex; gap: 0.5rem; flex-wrap: wrap;"><span style="background: rgba(212,175,55,0.2); padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.7rem;">Arduino</span><span style="background: rgba(212,175,55,0.2); padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.7rem;">C</span></div><a href="https://github.com/mohamedHIHI/-Voice-Translator.git" target="_blank" style="margin-top: 1rem; display: inline-block; color: var(--gold-primary);"><i class="fab fa-github"></i> Code source →</a></div>
+            <div class="gold-card" data-delay="0.1"><div class="card-icon"><i class="fas fa-calculator"></i></div><h3>Calculatrice Python</h3><p style="color: var(--text-muted); margin: 1rem 0;">Application console intuitive, logique claire et performante.</p><div><span style="background: rgba(212,175,55,0.2); padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.7rem;">Python</span></div><a href="https://github.com/mohamedHIHI/application-calculatrice.git" target="_blank" style="margin-top: 1rem; display: inline-block; color: var(--gold-primary);"><i class="fab fa-github"></i> Découvrir →</a></div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="https://github.com/mohamedHIHI" target="_blank" class="btn-gold"><i class="fab fa-github"></i> Explorer tous les projets</a>
+        </div>
+    </div>
+</section>
+
+<!-- Journey Timeline -->
+<section id="journey" style="background: linear-gradient(180deg, #141414 0%, #0F0F0F 100%);">
+    <div class="section-container">
+        <h2 class="section-title">Parcours <span class="gold">d'Or</span></h2>
+        <div class="section-divider"></div>
+        <div class="timeline-gold">
+            <div class="timeline-item" data-delay="0"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-date">2024-2025</div><h3>Baccalauréat Sciences Physiques</h3><p>Option français, excellence académique</p></div></div>
+            <div class="timeline-item" data-delay="0.1"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-date">2025</div><h3>Premiers pas en Développement Digital</h3><p>Formation intensive : HTML/CSS, JavaScript, Python</p></div></div>
+            <div class="timeline-item" data-delay="0.2"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-date">2025-2026</div><h3>Certification Robotique & Électronique</h3><p>Conception de robots autonomes, programmation embarquée</p></div></div>
+            <div class="timeline-item" data-delay="0.3"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-date">2026 - Présent</div><h3>Portfolio Prestige & Projets Fullstack</h3><p>Création d'expériences numériques d'exception</p><span style="display: inline-block; margin-top: 0.5rem; padding: 0.2rem 0.8rem; background: rgba(212,175,55,0.3); border-radius: 20px; font-size: 0.7rem;">Actuel</span></div></div>
+            <div class="timeline-item" data-delay="0.4"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-date">Objectif 2026+</div><h3>Développeur Full-Stack & IA</h3><p>Élargir les compétences vers le backend et l'intelligence artificielle</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills">
+    <div class="section-container">
+        <h2 class="section-title">Compétences <span class="gold">Prestige</span></h2>
+        <div class="section-divider"></div>
+        <div class="grid-2">
+            <div class="gold-card" data-delay="0"><h3>Expertise Technique</h3><div class="skill-item"><div class="skill-info"><span>Web Development</span><span>90%</span></div><div class="progress-gold"><div class="progress-fill" data-progress="90"></div></div></div><div class="skill-item"><div class="skill-info"><span>Python / C</span><span>85%</span></div><div class="progress-gold"><div class="progress-fill" data-progress="85"></div></div></div><div class="skill-item"><div class="skill-info"><span>Robotique Arduino</span><span>90%</span></div><div class="progress-gold"><div class="progress-fill" data-progress="90"></div></div></div><div class="skill-item"><div class="skill-info"><span>UI/UX Design</span><span>80%</span></div><div class="progress-gold"><div class="progress-fill" data-progress="80"></div></div></div></div>
+            <div class="gold-card" data-delay="0.1"><h3>Soft Skills & Valeurs</h3><div style="display: flex; flex-direction: column; gap: 1rem;"><div><i class="fas fa-crown" style="color: var(--gold-primary); width: 30px;"></i> Excellence & Leadership</div><div><i class="fas fa-gem" style="color: var(--gold-primary); width: 30px;"></i> Créativité & Innovation</div><div><i class="fas fa-chart-line" style="color: var(--gold-primary); width: 30px;"></i> Adaptabilité & Agilité</div><div><i class="fas fa-heart" style="color: var(--gold-primary); width: 30px;"></i> Passion & Engagement</div></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" style="background: linear-gradient(180deg, #0F0F0F 0%, #141414 100%);">
+    <div class="section-container">
+        <h2 class="section-title">Services <span class="gold">d'Exception</span></h2>
+        <div class="section-divider"></div>
+        <div class="grid-3">
+            <div class="gold-card" data-delay="0"><div class="card-icon"><i class="fas fa-globe"></i></div><h3>Web Development</h3><p>Sites et applications web sur mesure, élégants et performants</p></div>
+            <div class="gold-card" data-delay="0.1"><div class="card-icon"><i class="fas fa-mobile-alt"></i></div><h3>Mobile First</h3><p>Applications adaptatives et expériences fluides</p></div>
+            <div class="gold-card" data-delay="0.2"><div class="card-icon"><i class="fas fa-robot"></i></div><h3>Robotics & IoT</h3><p>Solutions robotiques intelligentes et connectées</p></div>
+            <div class="gold-card" data-delay="0.3"><div class="card-icon"><i class="fas fa-palette"></i></div><h3>Design Prestige</h3><p>Identité visuelle luxueuse et raffinée</p></div>
+            <div class="gold-card" data-delay="0.4"><div class="card-icon"><i class="fas fa-chart-line"></i></div><h3>Consulting Tech</h3><p>Conseil stratégique en innovation digitale</p></div>
+            <div class="gold-card" data-delay="0.5"><div class="card-icon"><i class="fas fa-gem"></i></div><h3>Solutions Sur-Mesure</h3><p>Créations uniques adaptées à vos besoins</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <div class="section-container">
+        <h2 class="section-title">Connexion <span class="gold">Privilège</span></h2>
+        <div class="section-divider"></div>
+        <div class="contact-grid">
+            <div>
+                <div class="contact-info-item"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div><strong>Email</strong><br><a href="mailto:mohamedhihi361@gmail.com" style="color: var(--gold-primary); text-decoration: none;">mohamedhihi361@gmail.com</a></div></div>
+                <div class="contact-info-item"><div class="contact-icon"><i class="fas fa-phone-alt"></i></div><div><strong>Téléphone</strong><br>+212 0776259942</div></div>
+                <div class="contact-info-item"><div class="contact-icon"><i class="fab fa-linkedin-in"></i></div><div><strong>LinkedIn</strong><br><a href="https://www.linkedin.com/in/mohamed-hihi-4826523b2" target="_blank" style="color: var(--gold-primary);">Mohamed Hihi</a></div></div>
+                <div class="contact-info-item"><div class="contact-icon"><i class="fab fa-github"></i></div><div><strong>GitHub</strong><br><a href="https://github.com/mohamedHIHI" target="_blank" style="color: var(--gold-primary);">mohamedHIHI</a></div></div>
+                <div class="gold-card" style="margin-top: 1rem;"><i class="fas fa-map-marker-alt" style="color: var(--gold-primary);"></i> Temara, Maroc<br><span style="font-size: 0.85rem;">Disponible pour collaborations d'exception</span></div>
+            </div>
+            <div>
+                <form id="prestigeForm" class="form-gold" style="background: var(--card-bg); padding: 2rem; border-radius: 24px; border: 1px solid rgba(212,175,55,0.3);">
+                    <input type="text" placeholder="Votre nom" required>
+                    <input type="email" placeholder="Votre email" required>
+                    <input type="text" placeholder="Sujet">
+                    <textarea rows="5" placeholder="Votre message prestigieux..." required></textarea>
+                    <button type="submit" class="btn-gold" style="width: 100%; justify-content: center;"><i class="fas fa-paper-plane"></i> Envoyer un message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Mohamed Hihi — Design Prestige & Excellence Dorée</p>
+</footer>
+
+<script>
+    // Particules dorées
+    function createParticles() {
+        const container = document.getElementById('particles');
+        if (!container) return;
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            const size = Math.random() * 6 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 8 + 's';
+            particle.style.animationDuration = Math.random() * 10 + 5 + 's';
+            container.appendChild(particle);
+        }
+    }
+    createParticles();
+
+    // Intersection Observer pour animations
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                // Progress bars
+                if (entry.target.querySelectorAll('.progress-fill').length) {
+                    entry.target.querySelectorAll('.progress-fill').forEach(bar => {
+                        const progress = bar.getAttribute('data-progress');
+                        if (progress) bar.style.width = progress + '%';
+                    });
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.gold-card, .timeline-item').forEach(el => observer.observe(el));
+
+    // Timeline items avec délais
+    document.querySelectorAll('.timeline-item').forEach((item, idx) => {
+        item.style.transitionDelay = (idx * 0.1) + 's';
+        observer.observe(item);
+    });
+
+    // Cartes avec délais
+    document.querySelectorAll('.gold-card[data-delay]').forEach(card => {
+        const delay = card.getAttribute('data-delay');
+        card.style.transitionDelay = delay + 's';
+        observer.observe(card);
+    });
+
+    // Form handling
+    const form = document.getElementById('prestigeForm');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button');
+            const original = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
+            btn.style.background = 'linear-gradient(135deg, #D4AF37, #B8860B)';
+            form.reset();
+            setTimeout(() => { btn.innerHTML = original; btn.style.background = ''; }, 3000);
+            const toast = document.createElement('div');
+            toast.innerHTML = '<i class="fas fa-crown"></i> Merci pour votre message, je vous répondrai rapidement.';
+            toast.style.position = 'fixed';
+            toast.style.bottom = '20px';
+            toast.style.right = '20px';
+            toast.style.background = 'linear-gradient(135deg, #D4AF37, #B8860B)';
+            toast.style.color = '#1A1A1A';
+            toast.style.padding = '12px 24px';
+            toast.style.borderRadius = '50px';
+            toast.style.fontWeight = '600';
+            toast.style.zIndex = '1000';
+            toast.style.boxShadow = '0 10px 30px rgba(212,175,55,0.3)';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        });
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+</script>
+</body>
+</html>
+```
